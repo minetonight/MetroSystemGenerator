@@ -1,4 +1,0 @@
-MetroSystemGenerator
-====================
-
-Bukkit plugin project
