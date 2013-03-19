@@ -1,0 +1,7 @@
+name: MetroSystemGenerator  
+main: com.github.minetonight.metrosystemgenerator.MetroSystemGenerator
+version: 0.1
+website: http://www.minecraftskinsserver.wordpress.com
+author: minetonight
+description: Custom world generator for Bukkit. Creates metro tunels and stations underground.
+load: startup
