@@ -5,3 +5,4 @@ website: http://www.minecraftskinsserver.wordpress.com
 author: minetonight
 description: Custom world generator for Bukkit. Creates metro tunels and stations underground.
 load: startup
+depends: [MineTonightUtils]

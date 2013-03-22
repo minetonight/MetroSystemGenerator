@@ -3,9 +3,10 @@ package com.github.minetonight.metrosystemgenerator;
 import java.util.Random;
 
 import org.bukkit.Chunk;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
+
+import com.github.minetonight.metrosystemgenerator.sections.TunnelSections;
 
 public class MetroSystemPopulator extends BlockPopulator {
 
@@ -14,28 +15,41 @@ public class MetroSystemPopulator extends BlockPopulator {
 		int cx = chunk.getX();
 		int cz = chunk.getZ();
 		
-		if (cz == 0) {
-			if (cx > -2 && cx < 2) {
+		if (cx == 0) {
+			if (cz > -4 && cz < 3) {
+				System.out.println("Adding tunnel at cz="+cz+"/cx="+cx);
+				//  y,z,x
+				int[][][] tunnel = getTunnel(cx, cz);
+				
 				for (int x = 0; x < 16; x++) {
-					for (int z = 5; z < 13; z++) {
-						//create ceiling
-						chunk.getBlock(x, 40, z).setType(Material.STONE);
-						
-						if (z == 5 || z == 12) {
-							for (int y = 39; y > 34; y--) {
-								//create walls
-								chunk.getBlock(x, y, z).setType(Material.STONE);
-							}//for y
-						} else {
-							//create tunnel
-							for (int y = 19; y > 14; y--) {
-								chunk.getBlock(x, y, z).setType(Material.AIR);
-							}//for y
-						}
+					for (int z = 0; z < 16; z++) {
+						for (int y = 0; y < tunnel.length; y++) {
+							int blockValue = tunnel[y][z][x];
+								
+							if (blockValue >= 0) {
+								if (blockValue > 1000) {
+									int metadata = blockValue % 1000;
+									int blockId = (blockValue - metadata) / 1000;
+									
+									chunk.getBlock(x, y+51, z).setTypeIdAndData(blockId, (byte) metadata, true);
+								} else {
+									chunk.getBlock(x, y+51, z).setTypeId(blockValue);
+								}
+							}
+						}//for y
 					}//for z
 				}//for x
 			}
 		}
 	}//eof populate
+
+	private int[][][] getTunnel(int chunkX, int chunkZ) {
+		
+		if (chunkZ == 2) {
+			return TunnelSections.getNWTunnel();
+		}
+		
+		return TunnelSections.getNSTunnel();
+	}
 
 }
