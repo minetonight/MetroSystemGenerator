@@ -16,7 +16,7 @@ public class MetroSystemPopulator extends BlockPopulator {
 		int cz = chunk.getZ();
 		
 		if (cx == 0) {
-			if (cz > -4 && cz < 3) {
+			if (cz >= -1 && cz <= 2) {
 				System.out.println("Adding tunnel at cz="+cz+"/cx="+cx);
 				//  y,z,x
 				int[][][] tunnel = getTunnel(cx, cz);
@@ -46,7 +46,13 @@ public class MetroSystemPopulator extends BlockPopulator {
 	private int[][][] getTunnel(int chunkX, int chunkZ) {
 		
 		if (chunkZ == 2) {
+			return TunnelSections.getEWTunnel();
+		}
+		if (chunkZ == 1) {
 			return TunnelSections.getNWTunnel();
+		}
+		if (chunkZ == -1) {
+			return TunnelSections.getSETunnel();
 		}
 		
 		return TunnelSections.getNSTunnel();
