@@ -262,7 +262,7 @@ private static final int[][][] NW_TUNNEL = {
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, _, _, _, _,}, 
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, S, S, _, _, _, _, _,}, 
 		{ 0, 0, 0, 0, 0, 0, 0, 0, S, S, _, _, _, _, _, _,}, 
-		{ 0, 0, 0, 0, 0, 0, 0, S, S, _, _, _, _, _, _, _,}, //
+		{ 0, 0, 0, 0, 0, 0, T, S, S, _, _, _, _, _, _, _,}, //
 		{ 0, 0, 0, 0, 0, 0, S, S, _, _, _, _, _, _, _, _,}, 
 		{ 0, 0, 0, 0, 0, S, S, _, _, _, _, _, _, _, _, _,}, 
 		{ 0, 0, 0, 0, S, S, _, _,  _, _, _, _, _, _, _, _,}, 
@@ -312,8 +312,8 @@ private static final int[][][] NW_TUNNEL = {
 		{ _, _, _, _, _, _, S, S,  S, S, _, _, _, _, _, _,}, 
 		{ _, _, _, _, _, S, S, S,  S, _, _, _, _, _, _, _,}, 
 		{ _, _, _, _, S, S, S, S,  _, _, _, _, _, _, _, _,}, 
-		{ _, _, _, S, S, S, S, _,  _, _, _, _, _, _, _, _,}, //
-		{ _, _, S, S, S, S, _, _,  _, _, _, _, _, _, _, _,}, 
+		{ _, _, _, S, t, S, S, _,  _, _, _, _, _, _, _, _,}, //
+		{ _, _, S, S, t, S, _, _,  _, _, _, _, _, _, _, _,}, 
 		{ _, S, S, S, S, _, _, _,  _, _, _, _, _, _, _, _,}, 
 		{ S, S, S, S, _, _, _, _,  _, _, _, _, _, _, _, _,}, 
 		{ S, S, S, _, _, _, _, _,  _, _, _, _, _, _, _, _,}, //
@@ -339,6 +339,7 @@ public static int[][][] getNWTunnel() {
 	MineTonightUtil.checkChunkSectionMatrix(NW_TUNNEL);
 	return NW_TUNNEL;
 }
+
 /**
  * @return byte array of the type: byte[y][z][x]
  */
@@ -346,6 +347,7 @@ public static int[][][] getNETunnel() {
 	MineTonightUtil.checkChunkSectionMatrix(NE_TUNNEL);
 	return NE_TUNNEL;
 }
+
 /**
  * @return byte array of the type: byte[y][z][x]
  */
@@ -353,6 +355,7 @@ public static int[][][] getSETunnel() {
 	MineTonightUtil.checkChunkSectionMatrix(SE_TUNNEL);
 	return SE_TUNNEL;
 }
+
 /**
  * @return byte array of the type: byte[y][z][x]
  */
